@@ -4,7 +4,10 @@ window.Famous = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+  	new Famous.Routers.Router({
+  		$rootEl: $('#container')
+  	})
+    Backbone.history.start();
   }
 };
 
