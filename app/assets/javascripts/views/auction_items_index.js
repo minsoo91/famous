@@ -10,6 +10,5 @@ Famous.Views.AuctionItemsIndexView = Backbone.View.extend({
 		});
 		this.$el.html(content);
 		return this;
-		debugger;
 	}
 })

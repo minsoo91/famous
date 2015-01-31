@@ -1,12 +1,24 @@
 <% auctionItems.each(function (auctionItem) { %>
-	<a href="#">
+	<a href="#show-details/<%= auctionItem.get("itemId") %>">
 		<div class="auctionItemsIndexItem">
 			<div class="auctionItemImageWrapper">
-				<img src="<%= auctionItem.get("imageURL") %>">
+				<figure>
+					<img src="<%= auctionItem.get("imageURL") %>">
+					<figcaption>
+						Seller: <%= auctionItem.get("sellerInfo")[0]["sellerUserName"] %>
+						<% var bids = auctionItem.get("sellingStatus")[0]["bidCount"] %>
+						<% if (bids) { %>
+							Bids: <%= bids %>
+						<% } else { %>
+							Bids: 0
+						<% } %>
+						Time Left: <%= auctionItem.get("sellingStatus")[0]["timeLeft"] %>
+					</figcaption>
+				</figure>
+				<div class="auctionItemInfoWrapper">
+					<p><%= auctionItem.get("title") %></p>
+					<p>$<%= auctionItem.get("sellingStatus")[0]["currentPrice"][0]["__value__"] %></p>
 			</div>
-			<div class="auctionItemInfoWrapper">
-				<p><%= auctionItem.get("title") %></p>
-				<p>$<%= auctionItem.get("sellingStatus")[0]["currentPrice"][0]["__value__"] %></p>
 			</div>
 		</div>
 	</a>

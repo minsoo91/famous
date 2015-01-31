@@ -1,0 +1,49 @@
+<% if (auctionItem !== undefined) { %>
+	<h1><%= auctionItem.get("title") %></h1>
+	<div class="auction-item-show-container">
+		<div id="basic-info">
+			<img src="<%= auctionItem.get("pictureURLLarge") %>">
+			<p>Location: <%= auctionItem.get("location") %></p>
+			<p>Seller Name: <%= auctionItem.get("sellerInfo")[0]["sellerUserName"] %></p>
+			<p>Feedback Score: <%= auctionItem.get("sellerInfo")[0]["sellerUserName"] %></p>
+			<p>Positive Feedback: <%= auctionItem.get("sellerInfo")[0]["positiveFeedbackPercent"] %>%</p>
+		</div>
+		<div id="shipping">
+			<h1>$<%= auctionItem.get("sellingStatus")[0]["currentPrice"][0]["__value__"] %></h1><br>
+			<h4>Shipping Information</h4>
+			<p>
+				Shipping Cost: <%= auctionItem.get("shippingInfo")[0]["shippingServiceCost"][0]["__value__"] %>
+			</p>
+			<p>
+				Shipping Type: <%= auctionItem.get("shippingInfo")[0]["shippingType"] %>
+			</p>
+			<p>
+				Ships To: <%= auctionItem.get("shippingInfo")[0]["shipToLocations"] %>
+			</p>
+			<br>
+			<h4>Bidding Information</h4>
+			<p>
+				Seller: <%= auctionItem.get("sellerInfo")[0]["sellerUserName"] %>
+			</p>
+			<% var bids = auctionItem.get("sellingStatus")[0]["bidCount"] %>
+			<% if (bids) { %>
+				<p>Bids: <%= bids %></p>
+			<% } else { %>
+				<p>Bids: 0</p>
+			<% } %>
+			<p>
+				Time Left: <%= auctionItem.get("sellingStatus")[0]["timeLeft"] %>
+			</p>
+			<p>
+				Start Time: <%= auctionItem.get("listingInfo")[0]["startTime"] %>
+			</p>
+			<p>
+				End Time: <%= auctionItem.get("listingInfo")[0]["endTime"] %>
+			</p>
+			<% var buyitnow = auctionItem.get("listingInfo")[0]["buyItNowAvailable"] %>
+			<% if (buyitnow === true) { %>
+				<a href="#" class="btn">Buy it now!</a>
+			<% } %>
+		</div>
+	</div>
+<% } %>

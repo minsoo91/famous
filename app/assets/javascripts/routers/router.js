@@ -4,16 +4,27 @@ Famous.Routers.Router = Backbone.Router.extend({
 	},
 
 	routes: {
-		"":"index"
+		"":"index",
+		"show-details/:id":"auctionItemShow"
 	},
 
 	index: function () {
-		var auctionItemsCollection = new Famous.Collections.AuctionItems();
 		auctionItemsCollection.fetch(); 
 		var indexView = new Famous.Views.AuctionItemsIndexView({
 			collection: auctionItemsCollection
 		});
 		this._swapView(indexView);
+	},
+
+	auctionItemShow: function (id) {
+		if (auctionItemsCollection === undefined) {
+			auctionItemsCollection.fetch(); 
+		}
+		var showView = new Famous.Views.AuctionItemShowView({
+			collection: auctionItemsCollection,
+			id: id
+		})
+		this._swapView(showView);
 	},
 
 	_swapView: function (view) {
