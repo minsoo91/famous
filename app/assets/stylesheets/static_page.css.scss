@@ -1,3 +1,51 @@
 // Place all the styles related to the StaticPage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#container {
+	width: 100%;
+	.auctionItemsIndexContainer {
+		margin-left: auto;
+		margin-right: auto;
+		overflow: auto;
+		a {
+			text-decoration: none;
+			outline-color: #999999;
+			color: #999999;
+			:hover {
+				color: #000000;
+			}
+		}
+		.auctionItemsIndexItem {
+			float: left;
+			width: 250px;
+			height: 350px;
+			margin: 20px 20px 20px 20px;
+			.auctionItemImageWrapper {
+				border: 1px solid;
+				height: 250px;
+				margin-left: auto;
+				margin-right: auto;
+				border-radius: 5px;
+				object-fit: cover;
+				img {
+					@include vertical-align;
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+			.auctionItemInfoWrapper {
+				margin-top: 5px;
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+<% auctionItems.each(function (auctionItem) { %>
+	<a href="#">
+		<div class="auctionItemsIndexItem">
+			<div class="auctionItemImageWrapper">
+				<img src="<%= auctionItem.get("imageURL") %>">
+			</div>
+			<div class="auctionItemInfoWrapper">
+				<p><%= auctionItem.get("title") %></p>
+				<p>$<%= auctionItem.get("sellingStatus")[0]["currentPrice"][0]["__value__"] %></p>
+			</div>
+		</div>
+	</a>
+<% }) %>

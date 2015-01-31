@@ -8,7 +8,11 @@ Famous.Routers.Router = Backbone.Router.extend({
 	},
 
 	index: function () {
-		var indexView = new Famous.Views.IndexView();
+		var auctionItemsCollection = new Famous.Collections.AuctionItems();
+		auctionItemsCollection.fetch(); 
+		var indexView = new Famous.Views.AuctionItemsIndexView({
+			collection: auctionItemsCollection
+		});
 		this._swapView(indexView);
 	},
 
